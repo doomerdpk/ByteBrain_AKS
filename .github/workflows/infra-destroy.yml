@@ -31,7 +31,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -destroy -input=false -var-file=bytebrain.tfvars -out=destroy-plan
+        run: terraform plan -destroy -input=false -out=destroy-plan
 
       - name: Upload Destroy Plan
         uses: actions/upload-artifact@v4
