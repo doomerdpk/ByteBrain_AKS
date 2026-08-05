@@ -6,11 +6,15 @@ variable "subscription_id" {
 variable "resource_group_name" {
   description = "Name of the resource group"
   type        = string
-  default     = "rg-bytebrain-dev-centralindia"
 }
 
 variable "location" {
   description = "Azure region for the resource group"
   type        = string
-  default     = "Central India"
+}
+
+variable "acr_name" {
+  description = "Globally unique ACR name (letters/numbers only, no hyphens, 5-50 chars)"
+  type        = string
+  default     = "acrbytebraindev01"
 }
