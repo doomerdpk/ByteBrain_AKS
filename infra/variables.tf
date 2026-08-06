@@ -16,7 +16,6 @@ variable "location" {
 variable "acr_name" {
   description = "Globally unique ACR name (letters/numbers only, no hyphens, 5-50 chars)"
   type        = string
-  default     = "acrbytebraindev01"
 }
 
 variable "key_vault_name" {
@@ -34,4 +33,64 @@ variable "jwt_secret" {
   type        = string
   description = "JWT signing secret for backend authentication"
   sensitive   = true
+}
+
+variable "backend_image_name" {
+  description = "Name of the backend image in ACR, without the registry prefix"
+  type        = string
+  default     = "bytebrain-backend"
+}
+
+variable "backend_image_tag" {
+  description = "Tag of the backend image in ACR"
+  type        = string
+  default     = "latest"
+}
+
+variable "frontend_image_name" {
+  description = "Name of the frontend image in ACR, without the registry prefix"
+  type        = string
+  default     = "bytebrain-frontend"
+}
+
+variable "frontend_image_tag" {
+  description = "Tag of the frontend image in ACR"
+  type        = string
+  default     = "latest"
+}
+
+variable "backend_cpu" {
+  description = "CPU cores allocated to the backend container instance"
+  type        = number
+  default     = 1
+}
+
+variable "backend_memory" {
+  description = "Memory in GB allocated to the backend container instance"
+  type        = number
+  default     = 2
+}
+
+variable "frontend_cpu" {
+  description = "CPU cores allocated to the frontend container instance"
+  type        = number
+  default     = 1
+}
+
+variable "frontend_memory" {
+  description = "Memory in GB allocated to the frontend container instance"
+  type        = number
+  default     = 2
+}
+
+variable "backend_dns_name_label" {
+  description = "Optional DNS label for the backend container group"
+  type        = string
+  default     = null
+}
+
+variable "frontend_dns_name_label" {
+  description = "Optional DNS label for the frontend container group"
+  type        = string
+  default     = null
 }

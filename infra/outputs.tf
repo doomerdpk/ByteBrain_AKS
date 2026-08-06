@@ -42,3 +42,23 @@ output "key_vault_name" {
   description = "Name of the Bytebrain Key Vault"
   value       = module.key_vault.key_vault_name
 }
+
+output "backend_container_fqdn" {
+  description = "FQDN of the backend container instance"
+  value       = module.bytebrain_backend_container.fqdn
+}
+
+output "backend_container_ip" {
+  description = "Public IP of the backend container instance"
+  value       = module.bytebrain_backend_container.ip_address
+}
+
+output "frontend_container_fqdn" {
+  description = "FQDN of the frontend container instance"
+  value       = module.bytebrain_frontend_container.fqdn
+}
+
+output "frontend_container_ip" {
+  description = "Public IP of the frontend container instance"
+  value       = module.bytebrain_frontend_container.ip_address
+}
