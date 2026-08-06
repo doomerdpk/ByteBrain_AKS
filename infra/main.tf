@@ -30,3 +30,17 @@ module "key_vault" {
   key_vault_name      = var.key_vault_name
   tags                = local.bytebrain_tags
 }
+
+module "bytebrain_db_connection_string" {
+  source       = "./modules/key-vault-secret"
+  key_vault_id = module.key_vault.key_vault_id
+  secret_name  = "bytebrain-db-connection-string"
+  secret_value = var.db_connection_string
+}
+
+module "bytebrain_jwt_secret" {
+  source       = "./modules/key-vault-secret"
+  key_vault_id = module.key_vault.key_vault_id
+  secret_name  = "bytebrain-jwt-secret"
+  secret_value = var.jwt_secret
+}

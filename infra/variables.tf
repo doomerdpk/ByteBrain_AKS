@@ -23,3 +23,15 @@ variable "key_vault_name" {
   description = "Name of the Key Vault"
   type        = string
 }
+
+variable "db_connection_string" {
+  type        = string
+  description = "Database connection string for the backend"
+  sensitive   = true
+}
+
+variable "jwt_secret" {
+  type        = string
+  description = "JWT signing secret for backend authentication"
+  sensitive   = true
+}
