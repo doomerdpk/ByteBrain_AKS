@@ -1,5 +1,0 @@
-# brace-expansion CVEs - package not present in current dependency tree
-# Verified via `npm ls brace-expansion` (empty) and package-lock.json grep (no match) on 2026-08-06
-# Re-check periodically in case a future dependency reintroduces it
-CVE-2026-69152
-CVE-2026-14257
