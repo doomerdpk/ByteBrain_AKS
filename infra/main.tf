@@ -22,3 +22,11 @@ module "bytebrain_acr" {
   sku                 = "Standard"
   tags                = local.bytebrain_tags
 }
+
+module "key_vault" {
+  source              = "./modules/key-vault"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  key_vault_name      = var.key_vault_name
+  tags                = local.bytebrain_tags
+}

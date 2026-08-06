@@ -27,3 +27,18 @@ output "acr_login_server" {
   description = "Login server of the Bytebrain Azure Container Registry"
   value       = module.bytebrain_acr.login_server
 }
+
+output "key_vault_id" {
+  description = "ID of the Bytebrain Key Vault"
+  value       = module.key_vault.key_vault_id
+}
+
+output "key_vault_uri" {
+  description = "URI of the Bytebrain Key Vault"
+  value       = module.key_vault.key_vault_uri
+}
+
+output "key_vault_name" {
+  description = "Name of the Bytebrain Key Vault"
+  value       = module.key_vault.key_vault_name
+}

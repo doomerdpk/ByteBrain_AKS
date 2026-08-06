@@ -18,3 +18,8 @@ variable "acr_name" {
   type        = string
   default     = "acrbytebraindev01"
 }
+
+variable "key_vault_name" {
+  description = "Name of the Key Vault"
+  type        = string
+}
