@@ -5,15 +5,15 @@ acr_name = "acrbytebrainaks"
 
 key_vault_name = "kvdpk01"
 
-backend_image_name
-backend_image_tag
-frontend_image_name
-frontend_image_tag
+backend_image_name = "bytebrainbackend"
+backend_image_tag = "2be1d12ced03964e55fb8f06843810bbb4ce4e61"
+frontend_image_name = "bytebrainfrontend"
+frontend_image_tag = "2be1d12ced03964e55fb8f06843810bbb4ce4e61"
 
-backend_cpu
-backend_memory
-frontend_cpu
-frontend_memory
+backend_cpu = 1
+backend_memory = 2
+frontend_cpu = 1
+frontend_memory = 2
 
-backend_dns_name_label
-frontend_dns_name_label
+backend_dns_name_label  = "bytebrain-backend"
+frontend_dns_name_label = "bytebrain-frontend"
