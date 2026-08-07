@@ -88,6 +88,15 @@ jobs:
           cache-from: type=gha,scope=${{ matrix.service }}
           cache-to: type=gha,mode=max,scope=${{ matrix.service }}
 
+      - name: Debug Trivy Findings (Before Scan)
+        if: matrix.enabled == 'true'
+        run: |
+          trivy image \
+            --severity HIGH,CRITICAL \
+            --ignore-unfixed \
+            --format table \
+            ${{ env.REGISTRY }}/${{ matrix.image }}:${{ github.sha }}
+
       - name: Scan image with Trivy
         if: matrix.enabled == 'true'
         uses: aquasecurity/trivy-action@v0.36.0
@@ -98,6 +107,15 @@ jobs:
           severity: CRITICAL,HIGH
           exit-code: "1"
           ignore-unfixed: true
+
+      - name: Debug Trivy Findings (After Scan)
+        if: matrix.enabled == 'true'
+        run: |
+          trivy image \
+            --severity HIGH,CRITICAL \
+            --ignore-unfixed \
+            --format table \
+            ${{ env.REGISTRY }}/${{ matrix.image }}:${{ github.sha }}
 
       - name: Upload Trivy results to GitHub Security tab
         if: always() && matrix.enabled == 'true'
