@@ -3,14 +3,6 @@ data "azurerm_user_assigned_identity" "this" {
   resource_group_name = var.identity_resource_group_name
 }
 
-resource "azurerm_role_assignment" "acr_pull" {
-  count                = var.enable_acr_pull ? 1 : 0
-  scope                = var.acr_id
-  role_definition_name = "AcrPull"
-  principal_id         = data.azurerm_user_assigned_identity.this.principal_id
-  principal_type       = "ServicePrincipal"
-}
-
 resource "azurerm_container_group" "this" {
   name                = var.name
   location            = var.location

@@ -67,17 +67,6 @@ variable "secure_environment_variables" {
   sensitive   = true
 }
 
-variable "acr_id" {
-  description = "ID of the Azure Container Registry used to pull images"
-  type        = string
-  default     = null
-}
-
-variable "enable_acr_pull" {
-  description = "Grant AcrPull to the container instance's managed identity"
-  type        = bool
-  default     = true
-}
 
 variable "identity_name" {
   description = "Name of the existing user-assigned managed identity to attach to this container group."

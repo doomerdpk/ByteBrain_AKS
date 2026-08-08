@@ -50,6 +50,7 @@ module "bytebrain_user_assigned_identity" {
   name                = var.user_assigned_identity_name
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
+  acr_id              = module.bytebrain_acr.id
   tags                = local.bytebrain_tags
 }
 
@@ -68,8 +69,6 @@ module "bytebrain_backend_container" {
   port                = 3000
   restart_policy      = "Always"
   dns_name_label      = var.backend_dns_name_label
-  acr_id              = module.bytebrain_acr.id
-  enable_acr_pull     = true
   environment_variables = {
     PORT     = "3000"
     NODE_ENV = "production"
@@ -96,8 +95,6 @@ module "bytebrain_frontend_container" {
   port                = 80
   restart_policy      = "Always"
   dns_name_label      = var.frontend_dns_name_label
-  acr_id              = module.bytebrain_acr.id
-  enable_acr_pull     = true
   environment_variables = {
     NODE_ENV = "production"
   }

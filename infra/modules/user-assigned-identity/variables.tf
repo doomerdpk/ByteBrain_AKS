@@ -18,9 +18,18 @@ variable "location" {
   type        = string
 }
 
+variable "acr_id" {
+  description = "ID of the Azure Container Registry used to pull images"
+  type        = string
+  default     = null
+}
+
+
 variable "tags" {
   description = "A map of tags to apply to the resource."
   type        = map(string)
   default     = {}
 }
+
+
 
