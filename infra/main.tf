@@ -76,7 +76,7 @@ module "bytebrain_backend_container" {
     NODE_ENV = "production"
   }
   secure_environment_variables = {
-    KEY_VAULT_URI            = module.key_vault.vault_uri
+    KEY_VAULT_URI            = module.key_vault.key_vault_uri
     DB_CONNECTION_SECRET_NAME = "bytebrain-db-connection-string"
     JWT_SECRET_SECRET_NAME    = "bytebrain-jwt-secret"
   }
