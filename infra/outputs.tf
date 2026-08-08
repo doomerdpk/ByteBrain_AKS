@@ -62,3 +62,8 @@ output "frontend_container_ip" {
   description = "Public IP of the frontend container instance"
   value       = module.bytebrain_frontend_container.ip_address
 }
+
+output "user_assigned_identity_id" {
+  description = "ID of the User-Assigned Managed Identity"
+  value       = module.bytebrain_user_assigned_identity.id
+}

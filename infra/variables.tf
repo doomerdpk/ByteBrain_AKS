@@ -94,3 +94,8 @@ variable "frontend_dns_name_label" {
   type        = string
   default     = null
 }
+
+variable "user_assigned_identity_name" {
+  description = "Name of the User-Assigned Managed Identity"
+  type        = string
+}
