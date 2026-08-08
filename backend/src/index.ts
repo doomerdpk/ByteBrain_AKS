@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { userRouter } from "./routes/routes.js";
 import healthRouter from "./routes/health.js";
 import http from "http";
-import { DATABASE_URL_STR, PORT } from "./config.js";
+import { loadConfig, getDatabaseUrl, PORT } from "./config.js";
 import cors from "cors";
 
 const app: Express = express();
@@ -15,20 +15,23 @@ app.use(cors());
 app.use("/api/v1", healthRouter);
 app.use("/api/v1", userRouter);
 
-
 async function startApplication() {
   try {
-    await mongoose.connect(DATABASE_URL_STR);
-    console.log("Successfully connected to the Database!");
-    app.listen(port, () => {
-      console.log("Server is running on port " + port);
-    });
+    await loadConfig();
+    console.log("✅ Configuration loaded from Key Vault");
+
+    await mongoose.connect(getDatabaseUrl());
+    console.log("✅ Successfully connected to the Database!");
 
     const server = http.createServer(app);
+    server.listen(port, () => {
+      console.log("🚀 Server is running on port " + port);
+    });
+
     const gracefulShutdown = async () => {
       console.log("Shutting down...");
       await mongoose.connection.close();
-      console.log("✅ DataBase connection closed");
+      console.log("✅ Database connection closed");
       server.close(() => {
         console.log("✅ Server closed");
         process.exit(0);
@@ -38,7 +41,8 @@ async function startApplication() {
     process.on("SIGINT", gracefulShutdown);
     process.on("SIGTERM", gracefulShutdown);
   } catch (e) {
-    console.error("Error Starting Application:", e);
+    console.error("❌ Error starting application:", e);
+    process.exit(1);
   }
 }
 
