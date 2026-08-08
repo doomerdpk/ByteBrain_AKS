@@ -51,7 +51,7 @@ module "bytebrain_user_assigned_identity" {
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   acr_id              = module.bytebrain_acr.id
-  key_vault_id        = module.key-vault.key_vault_id
+  key_vault_id        = module.key_vault.key_vault_id
   tags                = local.bytebrain_tags
 }
 
@@ -76,7 +76,7 @@ module "bytebrain_backend_container" {
     NODE_ENV = "production"
   }
   secure_environment_variables = {
-    KEY_VAULT_URI            = module.key-vault.vault_uri
+    KEY_VAULT_URI            = module.key_vault.vault_uri
     DB_CONNECTION_SECRET_NAME = "bytebrain-db-connection-string"
     JWT_SECRET_SECRET_NAME    = "bytebrain-jwt-secret"
   }
