@@ -51,7 +51,7 @@ module "bytebrain_user_assigned_identity" {
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   acr_id              = module.bytebrain_acr.id
-  key_vault_id        = module.key_vault.key_vault_id
+  key_vault_id        = module.key-vault.key_vault_id
   tags                = local.bytebrain_tags
 }
 
