@@ -79,8 +79,19 @@ variable "enable_acr_pull" {
   default     = true
 }
 
+variable "identity_name" {
+  description = "Name of the existing user-assigned managed identity to attach to this container group."
+  type        = string
+}
+
+variable "identity_resource_group_name" {
+  description = "Resource group where the existing user-assigned managed identity lives (may differ from the container's RG)."
+  type        = string
+}
+
 variable "tags" {
   description = "Tags to apply to the container instance"
   type        = map(string)
   default     = {}
 }
+

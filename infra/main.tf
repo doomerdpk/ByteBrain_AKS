@@ -53,49 +53,49 @@ module "bytebrain_user_assigned_identity" {
   tags                = local.bytebrain_tags
 }
 
-# module "bytebrain_backend_container" {
-#   source = "./modules/container-instance"
+module "bytebrain_backend_container" {
+  source = "./modules/container-instance"
 
-#   name                = "bytebrain-backend"
-#   container_name      = "backend"
-#   resource_group_name = module.bytebrain_rg.name
-#   location            = module.bytebrain_rg.location
-#   container_image     = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
-#   cpu                 = var.backend_cpu
-#   memory              = var.backend_memory
-#   port                = 3000
-#   restart_policy      = "Always"
-#   dns_name_label      = var.backend_dns_name_label
-#   acr_id              = module.bytebrain_acr.id
-#   enable_acr_pull     = true
-#   environment_variables = {
-#     PORT     = "3000"
-#     NODE_ENV = "production"
-#   }
-#   secure_environment_variables = {
-#     DATABASE_URL = var.db_connection_string
-#     JWT_SECRET   = var.jwt_secret
-#   }
-#   tags = local.bytebrain_tags
-# }
+  name                = "bytebrain-backend"
+  container_name      = "backend"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  container_image     = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
+  cpu                 = var.backend_cpu
+  memory              = var.backend_memory
+  port                = 3000
+  restart_policy      = "Always"
+  dns_name_label      = var.backend_dns_name_label
+  acr_id              = module.bytebrain_acr.id
+  enable_acr_pull     = true
+  environment_variables = {
+    PORT     = "3000"
+    NODE_ENV = "production"
+  }
+  secure_environment_variables = {
+    DATABASE_URL = var.db_connection_string
+    JWT_SECRET   = var.jwt_secret
+  }
+  tags = local.bytebrain_tags
+}
 
-# module "bytebrain_frontend_container" {
-#   source = "./modules/container-instance"
+module "bytebrain_frontend_container" {
+  source = "./modules/container-instance"
 
-#   name                = "bytebrain-frontend"
-#   container_name      = "frontend"
-#   resource_group_name = module.bytebrain_rg.name
-#   location            = module.bytebrain_rg.location
-#   container_image     = "${module.bytebrain_acr.login_server}/${var.frontend_image_name}:${var.frontend_image_tag}"
-#   cpu                 = var.frontend_cpu
-#   memory              = var.frontend_memory
-#   port                = 80
-#   restart_policy      = "Always"
-#   dns_name_label      = var.frontend_dns_name_label
-#   acr_id              = module.bytebrain_acr.id
-#   enable_acr_pull     = true
-#   environment_variables = {
-#     NODE_ENV = "production"
-#   }
-#   tags = local.bytebrain_tags
-# }
+  name                = "bytebrain-frontend"
+  container_name      = "frontend"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  container_image     = "${module.bytebrain_acr.login_server}/${var.frontend_image_name}:${var.frontend_image_tag}"
+  cpu                 = var.frontend_cpu
+  memory              = var.frontend_memory
+  port                = 80
+  restart_policy      = "Always"
+  dns_name_label      = var.frontend_dns_name_label
+  acr_id              = module.bytebrain_acr.id
+  enable_acr_pull     = true
+  environment_variables = {
+    NODE_ENV = "production"
+  }
+  tags = local.bytebrain_tags
+}

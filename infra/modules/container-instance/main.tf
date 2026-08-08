@@ -1,3 +1,16 @@
+data "azurerm_user_assigned_identity" "this" {
+  name                = var.identity_name
+  resource_group_name = var.identity_resource_group_name
+}
+
+resource "azurerm_role_assignment" "acr_pull" {
+  count                = var.enable_acr_pull ? 1 : 0
+  scope                = var.acr_id
+  role_definition_name = "AcrPull"
+  principal_id         = data.azurerm_user_assigned_identity.this.principal_id
+  principal_type       = "ServicePrincipal"
+}
+
 resource "azurerm_container_group" "this" {
   name                = var.name
   location            = var.location
@@ -9,9 +22,10 @@ resource "azurerm_container_group" "this" {
   tags                = var.tags
 
   identity {
-    type = "SystemAssigned"
+    type         = "UserAssigned"
+    identity_ids = [data.azurerm_user_assigned_identity.this.id]
   }
-
+  
   container {
     name   = var.container_name
     image  = var.container_image
@@ -23,16 +37,9 @@ resource "azurerm_container_group" "this" {
       protocol = "TCP"
     }
 
-    environment_variables = var.environment_variables
+    environment_variables        = var.environment_variables
     secure_environment_variables = var.secure_environment_variables
   }
-}
 
-resource "azurerm_role_assignment" "acr_pull" {
-  count                = var.enable_acr_pull ? 1 : 0
-  scope                = var.acr_id
-  role_definition_name = "AcrPull"
-  principal_id         = azurerm_container_group.this.identity[0].principal_id
-
-  depends_on = [azurerm_container_group.this]
+  depends_on = [azurerm_role_assignment.acr_pull]
 }
