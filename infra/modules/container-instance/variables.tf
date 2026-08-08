@@ -78,6 +78,11 @@ variable "identity_resource_group_name" {
   type        = string
 }
 
+variable "acr_login_server" {
+  description = "Login server of the ACR (e.g. acrbytebrainaks.azurecr.io). Required for image_registry_credential."
+  type        = string
+}
+
 variable "tags" {
   description = "Tags to apply to the container instance"
   type        = map(string)

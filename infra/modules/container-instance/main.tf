@@ -17,7 +17,12 @@ resource "azurerm_container_group" "this" {
     type         = "UserAssigned"
     identity_ids = [data.azurerm_user_assigned_identity.this.id]
   }
-  
+
+  image_registry_credential {
+    server                    = var.acr_login_server
+    user_assigned_identity_id = data.azurerm_user_assigned_identity.this.id
+  }
+
   container {
     name   = var.container_name
     image  = var.container_image

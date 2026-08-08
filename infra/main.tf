@@ -64,6 +64,7 @@ module "bytebrain_backend_container" {
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   container_image     = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
+  acr_login_server   = module.bytebrain_acr.login_server
   cpu                 = var.backend_cpu
   memory              = var.backend_memory
   port                = 3000
@@ -85,6 +86,7 @@ module "bytebrain_frontend_container" {
 
   name                = "bytebrain-frontend"
   container_name      = "frontend"
+  acr_login_server   = module.bytebrain_acr.login_server
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   identity_name       = module.bytebrain_user_assigned_identity.name
