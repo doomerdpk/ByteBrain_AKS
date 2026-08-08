@@ -58,6 +58,8 @@ module "bytebrain_backend_container" {
 
   name                = "bytebrain-backend"
   container_name      = "backend"
+  identity_name       = module.bytebrain_user_assigned_identity.name
+  identity_resource_group_name = module.bytebrain_user_assigned_identity.name
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   container_image     = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
