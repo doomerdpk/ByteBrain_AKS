@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 import { userMiddleware } from "../middlewares/userMiddleware.js";
 import { z } from "zod";
 import crypto from "crypto";
-import { JWT_SECRET_STR, saltRounds } from "../config.js";
+import { getJwtSecret, saltRounds } from "../config.js";
 import { Request, Response } from "express";
 
 export const userRouter = Router();
@@ -85,7 +85,7 @@ userRouter.post("/login", async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ userId: foundUser._id }, JWT_SECRET_STR);
+    const token = jwt.sign({ userId: foundUser._id }, getJwtSecret());
 
     res.status(200).json({
       message: "user logged-in successfully",
