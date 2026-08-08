@@ -24,6 +24,12 @@ variable "acr_id" {
   default     = null
 }
 
+variable "key_vault_id" {
+  description = "ID of the Azure Key Vault used to store secrets"
+  type        = string
+  default     = null
+}
+
 
 variable "tags" {
   description = "A map of tags to apply to the resource."
