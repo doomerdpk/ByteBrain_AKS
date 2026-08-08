@@ -59,7 +59,7 @@ module "bytebrain_backend_container" {
   name                = "bytebrain-backend"
   container_name      = "backend"
   identity_name       = module.bytebrain_user_assigned_identity.name
-  identity_resource_group_name = module.bytebrain_user_assigned_identity.resource_group_name
+  identity_resource_group_name = module.bytebrain_rg.name
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   container_image     = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
@@ -89,7 +89,7 @@ module "bytebrain_frontend_container" {
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
   identity_name       = module.bytebrain_user_assigned_identity.name
-  identity_resource_group_name = module.bytebrain_user_assigned_identity.resource_group_name
+  identity_resource_group_name = module.bytebrain_rg.name
   container_image     = "${module.bytebrain_acr.login_server}/${var.frontend_image_name}:${var.frontend_image_tag}"
   cpu                 = var.frontend_cpu
   memory              = var.frontend_memory
