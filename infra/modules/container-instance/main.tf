@@ -32,6 +32,4 @@ resource "azurerm_container_group" "this" {
     environment_variables        = var.environment_variables
     secure_environment_variables = var.secure_environment_variables
   }
-
-  depends_on = [azurerm_role_assignment.acr_pull]
 }
