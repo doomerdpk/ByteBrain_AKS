@@ -141,3 +141,52 @@ module "bytebrain_container_app_env" {
   internal_load_balancer_enabled = false
   tags                = local.bytebrain_tags
 }
+
+module "bytebrain_backend_container_app" {
+  source = "./modules/container-app"
+
+  name                         = "bytebrain-backend-app"
+  resource_group_name          = module.bytebrain_rg.name
+  container_app_environment_id = module.bytebrain_container_app_env.id
+  identity_name                = module.bytebrain_user_assigned_identity.name
+  identity_resource_group_name = module.bytebrain_rg.name
+  acr_login_server             = module.bytebrain_acr.login_server
+  image                        = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
+  cpu                          = var.backend_cpu
+  memory                       = var.backend_memory
+  min_replicas                 = 1
+  max_replicas                 = 3
+  external_ingress             = true
+  target_port                  = 3000
+  env_vars                     = {
+    PORT                       = "3000"
+    NODE_ENV                   = "production"
+    KEY_VAULT_URI               = module.key_vault.key_vault_uri
+    DB_CONNECTION_SECRET_NAME   = "bytebrain-db-connection-string"
+    JWT_SECRET_SECRET_NAME      = "bytebrain-jwt-secret"
+    AZURE_CLIENT_ID              = module.bytebrain_user_assigned_identity.client_id
+  }
+  tags = local.bytebrain_tags
+}
+
+module "bytebrain_frontend_container_app" {
+  source = "./modules/container-app"
+
+  name                         = "bytebrain-frontend-app"
+  resource_group_name          = module.bytebrain_rg.name
+  container_app_environment_id = module.bytebrain_container_app_env.id
+  identity_name                = module.bytebrain_user_assigned_identity.name
+  identity_resource_group_name = module.bytebrain_rg.name
+  acr_login_server             = module.bytebrain_acr.login_server
+  image                        = "${module.bytebrain_acr.login_server}/${var.frontend_image_name}:${var.frontend_image_tag}"
+  cpu                          = var.frontend_cpu
+  memory                       = var.frontend_memory
+  min_replicas                 = 1
+  max_replicas                 = 3
+  external_ingress             = true
+  target_port                  = 80
+  env_vars                     = {
+    NODE_ENV = "production"
+  }
+  tags = local.bytebrain_tags
+} 
