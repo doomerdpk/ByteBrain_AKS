@@ -119,6 +119,7 @@ module "bytebrain_vnet" {
 
 module "bytebrain_subnet" {
   source              = "./modules/subnet"
+  name                = var.subnet_name
   resource_group_name = module.bytebrain_rg.name
   vnet_name           = module.bytebrain_vnet.name
   subnet_name         = var.subnet_name
