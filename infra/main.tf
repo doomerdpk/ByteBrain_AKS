@@ -74,10 +74,10 @@ module "bytebrain_backend_container" {
   environment_variables = {
   PORT                       = "3000"
   NODE_ENV                   = "production"
-  KEY_VAULT_URI               = module.key_vault.vault_uri
+  KEY_VAULT_URI               = module.key_vault.key_vault_uri
   DB_CONNECTION_SECRET_NAME   = "bytebrain-db-connection-string"
   JWT_SECRET_SECRET_NAME      = "bytebrain-jwt-secret"
-  AZURE_CLIENT_ID              = module.bytebrain_user_assigned_identity.client_id
+  AZURE_CLIENT_ID              = module.bytebrain_user_assigned_identity.id
   }
   tags = local.bytebrain_tags
 }
