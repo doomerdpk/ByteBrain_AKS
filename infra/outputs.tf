@@ -68,11 +68,6 @@ output "user_assigned_identity_id" {
   value       = module.bytebrain_user_assigned_identity.id
 }
 
-output "user_assigned_identity_principal_id" {
-  description = "Principal ID of the User-Assigned Managed Identity"
-  value       = module.bytebrain_user_assigned_identity.principal_id
-}
-
 output "user_assigned_identity_client_id" {
   description = "Client ID of the User-Assigned Managed Identity"
   value       = module.bytebrain_user_assigned_identity.client_id
