@@ -128,7 +128,7 @@ module "bytebrain_subnet" {
 
 
 module "bytebrain_container_app_env" {
-  source = "./modules/container-app-env"
+  source = "./modules/container-apps-environment"
 
   name                = var.container_app_env_name
   resource_group_name = module.bytebrain_rg.name
