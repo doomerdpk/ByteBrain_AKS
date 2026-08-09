@@ -85,5 +85,5 @@ output "subnet_id" {
 
 output "container_app_environment_id" {
   description = "ID of the Azure Container Apps Environment"
-  value       = module.bytebrain_container_app_environment.id
+  value       = module.bytebrain_container_app_env.id
 }

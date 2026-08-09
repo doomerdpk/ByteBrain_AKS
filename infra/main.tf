@@ -133,6 +133,7 @@ module "bytebrain_container_app_env" {
   name                = var.container_app_env_name
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
-  infrastructure_subnet_id = module.bytebrain_subnet.id
+  infrastructure_subnet_id = module.bytebrain_subnet.subnet_id
+  internal_load_balancer_enabled = false
   tags                = local.bytebrain_tags
 }

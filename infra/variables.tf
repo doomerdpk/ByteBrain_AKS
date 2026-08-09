@@ -110,7 +110,7 @@ variable "subnet_name" {
   type        = string
 }
 
-variable "container_app_environment_name" {
+variable "container_app_env_name" {
   description = "Name of the Azure Container Apps Environment"
   type        = string
 }
