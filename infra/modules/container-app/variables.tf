@@ -10,18 +10,8 @@ variable "container_app_environment_id" {
   type = string
 }
 
-variable "identity_id" {
-  type        = string
-  description = "Resource ID of the User Assigned Managed Identity"
-}
-
 variable "acr_login_server" {
   type = string
-}
-
-variable "acr_identity_id" {
-  type        = string
-  description = "Resource ID of the identity (must be in identity_ids) used to pull from ACR"
 }
 
 variable "image" {
