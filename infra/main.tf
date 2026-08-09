@@ -186,7 +186,8 @@ module "bytebrain_frontend_container_app" {
   external_ingress             = true
   target_port                  = 80
   env_vars                     = [
-    { name = "NODE_ENV", value = "production" }
+    { name = "NODE_ENV", value = "production" },
+    { name = "BACKEND_URL", value = "https://${module.bytebrain_backend_container_app.fqdn}" }
   ]
   tags = local.bytebrain_tags
 } 
