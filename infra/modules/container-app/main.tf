@@ -17,8 +17,8 @@ resource "azurerm_container_app" "this" {
   }
 
   registry {
-     server                    = var.acr_login_server
-    user_assigned_identity_id  =  data.azurerm_user_assigned_identity.this.id
+    server                    = var.acr_login_server
+    identity                  =  data.azurerm_user_assigned_identity.this.id
   }
 
   dynamic "secret" {
