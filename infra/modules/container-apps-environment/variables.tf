@@ -10,13 +10,9 @@ variable "location" {
   type = string
 }
 
-variable "log_analytics_workspace_id" {
-  type = string
-}
-
 variable "infrastructure_subnet_id" {
   type        = string
-  description = "Optional. Set this if you want the environment injected into your own VNet (needed for private/internal ingress to the backend). Leave null for the simplest setup."
+  description = "Set this if you want the environment injected into your own VNet (needed for private/internal ingress to the backend)."
   default     = null
 }
 
