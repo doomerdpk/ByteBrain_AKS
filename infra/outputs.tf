@@ -82,3 +82,8 @@ output "subnet_id" {
   description = "ID of the Subnet within the Virtual Network"
   value       = module.bytebrain_subnet.subnet_id
 }
+
+output "container_app_environment_id" {
+  description = "ID of the Azure Container Apps Environment"
+  value       = module.bytebrain_container_app_environment.id
+}

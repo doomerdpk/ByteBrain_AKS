@@ -125,3 +125,14 @@ module "bytebrain_subnet" {
   address_prefixes    = ["10.0.1.64/26"]
   tags                = local.bytebrain_tags
 }
+
+
+module "bytebrain_container_app_env" {
+  source = "./modules/container-app-env"
+
+  name                = var.container_app_env_name
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  subnet_id           = module.bytebrain_subnet.id
+  tags                = local.bytebrain_tags
+}
