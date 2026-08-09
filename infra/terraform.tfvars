@@ -25,3 +25,8 @@ vnet_name                = "vnet-bytebrain-aks"
 subnet_name              = "snet-bytebrain-container-apps"
 
 container_app_env_name = "env-bytebrain-container-apps"
+
+backend_cpu_app = 2
+backend_memory_app = "2Gi"
+frontend_cpu_app = 1
+frontend_memory_app = "2Gi"

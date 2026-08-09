@@ -114,3 +114,27 @@ variable "container_app_env_name" {
   description = "Name of the Azure Container Apps Environment"
   type        = string
 }
+
+variable "backend_cpu_app" {
+  description = "CPU cores allocated to the backend container app"
+  type        = number
+  default     = 1
+}
+
+variable "backend_memory_app" {
+  description = "Memory allocated to the backend container app"
+  type        = string
+  default     = "1Gi"
+}
+
+variable "frontend_cpu_app" {
+  description = "CPU cores allocated to the frontend container app"
+  type        = number
+  default     = 1
+}
+
+variable "frontend_memory_app" {
+  description = "Memory allocated to the frontend container app"
+  type        = string
+  default     = "1Gi"
+}

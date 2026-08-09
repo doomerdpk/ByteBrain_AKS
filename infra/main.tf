@@ -152,8 +152,8 @@ module "bytebrain_backend_container_app" {
   identity_resource_group_name = module.bytebrain_rg.name
   acr_login_server             = module.bytebrain_acr.login_server
   image                        = "${module.bytebrain_acr.login_server}/${var.backend_image_name}:${var.backend_image_tag}"
-  cpu                          = var.backend_cpu
-  memory                       = var.backend_memory
+  cpu                          = var.backend_cpu_app
+  memory                       = var.backend_memory_app
   min_replicas                 = 1
   max_replicas                 = 3
   external_ingress             = true
@@ -179,8 +179,8 @@ module "bytebrain_frontend_container_app" {
   identity_resource_group_name = module.bytebrain_rg.name
   acr_login_server             = module.bytebrain_acr.login_server
   image                        = "${module.bytebrain_acr.login_server}/${var.frontend_image_name}:${var.frontend_image_tag}"
-  cpu                          = var.frontend_cpu
-  memory                       = var.frontend_memory
+  cpu                          = var.frontend_cpu_app
+  memory                       = var.frontend_memory_app
   min_replicas                 = 1
   max_replicas                 = 3
   external_ingress             = true
