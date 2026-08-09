@@ -72,13 +72,12 @@ module "bytebrain_backend_container" {
   restart_policy      = "Always"
   dns_name_label      = var.backend_dns_name_label
   environment_variables = {
-    PORT     = "3000"
-    NODE_ENV = "production"
-  }
-  secure_environment_variables = {
-    KEY_VAULT_URI            = module.key_vault.key_vault_uri
-    DB_CONNECTION_SECRET_NAME = "bytebrain-db-connection-string"
-    JWT_SECRET_SECRET_NAME    = "bytebrain-jwt-secret"
+  PORT                       = "3000"
+  NODE_ENV                   = "production"
+  KEY_VAULT_URI               = module.key_vault.vault_uri
+  DB_CONNECTION_SECRET_NAME   = "bytebrain-db-connection-string"
+  JWT_SECRET_SECRET_NAME      = "bytebrain-jwt-secret"
+  AZURE_CLIENT_ID              = module.bytebrain_user_assigned_identity.client_id
   }
   tags = local.bytebrain_tags
 }
