@@ -14,6 +14,17 @@ variable "address_prefixes" {
   type = list(string)
 }
 
+variable "delegation" {
+  description = "Optional subnet delegation configuration."
+
+  type = object({
+    name         = string
+    service_name = string
+  })
+
+  default = null
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

@@ -123,6 +123,10 @@ module "bytebrain_subnet" {
   vnet_name           = module.bytebrain_vnet.name
   subnet_name         = var.subnet_name
   address_prefixes    = ["10.0.1.64/26"]
+  delegation = {
+    name         = "container-apps-delegation"
+    service_name = "Microsoft.App/environments"
+  }
   tags                = local.bytebrain_tags
 }
 
