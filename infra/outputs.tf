@@ -77,3 +77,8 @@ output "vnet_id" {
   description = "ID of the Virtual Network"
   value       = module.bytebrain_vnet.id
 }
+
+output "subnet_id" {
+  description = "ID of the Subnet within the Virtual Network"
+  value       = module.bytebrain_vnet.subnet_id
+}

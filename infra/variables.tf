@@ -104,3 +104,8 @@ variable "vnet_name" {
   description = "Name of the Virtual Network"
   type        = string
 }
+
+variable "subnet_name" {
+  description = "Name of the Subnet within the Virtual Network"
+  type        = string
+}

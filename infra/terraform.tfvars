@@ -21,3 +21,5 @@ frontend_dns_name_label = "bytebrain-frontend"
 user_assigned_identity_name = "id-bytebrain-aks-eastus"
 
 vnet_name                = "vnet-bytebrain-aks"
+
+subnet_name              = "snet-bytebrain-container-apps"
