@@ -10,6 +10,16 @@ variable "container_app_environment_id" {
   type = string
 }
 
+variable "identity_name" {
+  description = "Name of the existing user-assigned managed identity to attach to this container app."
+  type        = string
+}
+
+variable "identity_resource_group_name" {
+  description = "Resource group where the existing user-assigned managed identity lives."
+  type        = string
+}
+
 variable "acr_login_server" {
   type = string
 }
