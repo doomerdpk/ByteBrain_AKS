@@ -80,5 +80,5 @@ output "vnet_id" {
 
 output "subnet_id" {
   description = "ID of the Subnet within the Virtual Network"
-  value       = module.bytebrain_vnet.subnet_id
+  value       = module.bytebrain_subnet.subnet_id
 }
