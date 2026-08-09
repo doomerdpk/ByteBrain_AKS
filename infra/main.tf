@@ -103,3 +103,16 @@ module "bytebrain_frontend_container" {
   }
   tags = local.bytebrain_tags
 }
+
+module "bytebrain_vnet" {
+  source = "./modules/vnet"
+
+  name                = var.vnet_name
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  address_space = [
+    "10.0.0.0/16"
+  ]
+  dns_servers = []
+  tags = local.bytebrain_tags
+}

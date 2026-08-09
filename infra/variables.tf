@@ -99,3 +99,8 @@ variable "user_assigned_identity_name" {
   description = "Name of the User-Assigned Managed Identity"
   type        = string
 }
+
+variable "vnet_name" {
+  description = "Name of the Virtual Network"
+  type        = string
+}
