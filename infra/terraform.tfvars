@@ -8,7 +8,7 @@ key_vault_name = "kvdpk01"
 backend_image_name = "bytebrainbackend"
 backend_image_tag = "30616c1edefe79c6d2f78490aa79ab6cc3d66f14"
 frontend_image_name = "bytebrainfrontend"
-frontend_image_tag = "5d1d2be159f4c1ceb5b8f33b8d13d1e127537aca"
+frontend_image_tag = "580603c989d6553532796c90f22f839a3898b077"
 
 backend_cpu = 2
 backend_memory = 2
