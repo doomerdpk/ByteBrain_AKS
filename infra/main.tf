@@ -158,14 +158,14 @@ module "bytebrain_backend_container_app" {
   max_replicas                 = 3
   external_ingress             = true
   target_port                  = 3000
-  env_vars                     = {
-    PORT                       = "3000"
-    NODE_ENV                   = "production"
-    KEY_VAULT_URI               = module.key_vault.key_vault_uri
-    DB_CONNECTION_SECRET_NAME   = "bytebrain-db-connection-string"
-    JWT_SECRET_SECRET_NAME      = "bytebrain-jwt-secret"
-    AZURE_CLIENT_ID              = module.bytebrain_user_assigned_identity.client_id
-  }
+  env_vars = [
+  { name = "PORT", value = "3000" },
+  { name = "NODE_ENV", value = "production" },
+  { name = "KEY_VAULT_URI", value = module.key_vault.key_vault_uri },
+  { name = "DB_CONNECTION_SECRET_NAME", value = "bytebrain-db-connection-string" },
+  { name = "JWT_SECRET_SECRET_NAME", value = "bytebrain-jwt-secret" },
+  { name = "AZURE_CLIENT_ID", value = module.bytebrain_user_assigned_identity.client_id },
+]
   tags = local.bytebrain_tags
 }
 
@@ -185,8 +185,8 @@ module "bytebrain_frontend_container_app" {
   max_replicas                 = 3
   external_ingress             = true
   target_port                  = 80
-  env_vars                     = {
-    NODE_ENV = "production"
-  }
+  env_vars                     = [
+    { name = "NODE_ENV", value = "production" }
+  ]
   tags = local.bytebrain_tags
 } 
