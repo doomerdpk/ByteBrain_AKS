@@ -95,5 +95,5 @@ output "static_web_app_id" {
 
 output "static_web_app_hostname" {
   description = "Hostname of the static web apps"
-  value       = module.bytebrain_frontend.default_host_name
+  value       = module.bytebrain_frontend.default_hostname
 }
