@@ -195,7 +195,7 @@ module "bytebrain_frontend_container_app" {
 
 module "bytebrain_frontend" {
 
-  source = "./modules/static-web-apps"
+  source = "./modules/static-web-app"
 
   name                = var.static_web_app_name
   resource_group_name = module.bytebrain_rg.name
