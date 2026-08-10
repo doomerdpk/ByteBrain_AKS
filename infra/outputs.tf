@@ -88,7 +88,7 @@ output "container_app_environment_id" {
   value       = module.bytebrain_container_app_env.id
 }
 
-output static_web_app_id" {
+output "static_web_app_id" {
   description = "ID of the Static web app"
   value       = module.bytebrain_frontend.id
 }
