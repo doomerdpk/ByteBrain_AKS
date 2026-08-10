@@ -33,3 +33,6 @@ frontend_cpu_app    = 1
 frontend_memory_app = "2Gi"
 
 static_web_app_name = "bytebrain-aks-fe"
+
+bastion_host_name = "dpk-bastion-01"
+sku = "Basic"

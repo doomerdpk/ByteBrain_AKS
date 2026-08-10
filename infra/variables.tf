@@ -143,3 +143,14 @@ variable "static_web_app_name" {
   description = "Name of the static web app to deploy react frontend"
   type        = string
 }
+
+variable "bastion_host_name" {
+  description = "Name of the Azure Bastion Host"
+  type        = string
+}
+
+variable "sku" {
+  description = "SKU of the Azure Bastion Host"
+  type        = string
+}
+

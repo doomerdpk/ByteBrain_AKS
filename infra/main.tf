@@ -204,3 +204,22 @@ module "bytebrain_frontend" {
   tags = local.bytebrain_tags
 }
 
+module "azure_bastion" {
+  source = "./modules/azure-bastion"
+
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  tags                = local.bytebrain_tags
+
+  vnet_id   = module.bytebrain_vnet.id
+  vnet_name = module.bytebrain_vnet.name
+
+  bastion_subnet_address_prefix = "10.0.1.0/26"
+  bastion_host_name             = var.bastion_host_name
+
+  sku                = var.sku
+  enable_diagnostics = false
+
+  allowed_source_address_prefixes = ["103.175.135.241/32"]
+}
+

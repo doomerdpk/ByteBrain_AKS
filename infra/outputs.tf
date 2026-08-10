@@ -97,3 +97,28 @@ output "static_web_app_hostname" {
   description = "Hostname of the static web apps"
   value       = module.bytebrain_frontend.default_hostname
 }
+
+output "bastion_host_id" {
+  description = "Azure Bastion Host ID"
+  value       = module.azure_bastion.bastion_host_id
+}
+
+output "bastion_host_name" {
+  description = "Azure Bastion Host Name"
+  value       = module.azure_bastion.bastion_host_name
+}
+
+output "bastion_public_ip_address" {
+  description = "Azure Bastion Public IP Address"
+  value       = module.azure_bastion.bastion_public_ip_address
+}
+
+output "bastion_subnet_id" {
+  description = "Azure Bastion Subnet ID"
+  value       = module.azure_bastion.bastion_subnet_id
+}
+
+output "bastion_nsg_id" {
+  description = "Azure Bastion Network Security Group ID"
+  value       = module.azure_bastion.nsg_id
+}
