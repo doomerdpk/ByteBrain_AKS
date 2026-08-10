@@ -199,7 +199,7 @@ module "bytebrain_frontend" {
 
   name                = var.static_web_app_name
   resource_group_name = module.bytebrain_rg.name
-  location = module.bytebrain_rg.location
+  location = "EAST US2"
 
   tags = local.bytebrain_tags
 }
