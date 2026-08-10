@@ -87,3 +87,13 @@ output "container_app_environment_id" {
   description = "ID of the Azure Container Apps Environment"
   value       = module.bytebrain_container_app_env.id
 }
+
+output static_web_app_id" {
+  description = "ID of the Static web app"
+  value       = module.bytebrain_frontend.id
+}
+
+output "static_web_app_hostname" {
+  description = "Hostname of the static web apps"
+  value       = module.bytebrain_frontend.default_host_name
+}

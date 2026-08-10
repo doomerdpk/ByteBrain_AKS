@@ -138,3 +138,8 @@ variable "frontend_memory_app" {
   type        = string
   default     = "1Gi"
 }
+
+variable "static_web_app_name" {
+  description = "Name of the static web app to deploy react frontend"
+  type        = string
+}

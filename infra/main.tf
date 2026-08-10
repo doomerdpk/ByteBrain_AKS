@@ -191,3 +191,16 @@ module "bytebrain_frontend_container_app" {
   ]
   tags = local.bytebrain_tags
 } 
+
+
+module "bytebrain_frontend" {
+
+  source = "./modules/static-web-apps"
+
+  name                = var.static_web_app_name
+  resource_group_name = module.bytebrain_rg.name
+  location = module.bytebrain_rg.location
+
+  tags = local.bytebrain_tags
+}
+

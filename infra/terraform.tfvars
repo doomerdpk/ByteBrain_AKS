@@ -31,3 +31,5 @@ backend_memory_app = "4Gi"
 
 frontend_cpu_app    = 1
 frontend_memory_app = "2Gi"
+
+static_web_app_name = "bytebrain-aks-fe"
