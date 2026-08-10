@@ -234,3 +234,12 @@ module "nat_gateway" {
   tags                = local.bytebrain_tags
 }
 
+
+module "log_analytics" {
+  source              = "./modules/log-analytics"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  workspace_name      = var.log_analytics_workspace_name
+  tags                = local.bytebrain_tags
+}
+

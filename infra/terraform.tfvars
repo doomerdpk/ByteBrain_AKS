@@ -39,3 +39,5 @@ sku = "Basic"
 
 nat_gateway_name = "dpk-ng-01"
 public_ip_name = "dpk-pip-01"
+
+log_analytics_workspace_name = "dpk-workspace-01"

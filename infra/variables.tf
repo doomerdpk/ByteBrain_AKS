@@ -164,3 +164,8 @@ variable "public_ip_name" {
   description = "Name of the Public IP associated with the NAT Gateway"
   type        = string
 }
+
+variable "log_analytics_workspace_name" {
+  description = "Name of the Log Analytics Workspace"
+  type        = string
+}
