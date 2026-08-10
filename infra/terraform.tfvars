@@ -36,3 +36,6 @@ static_web_app_name = "bytebrain-aks-fe"
 
 bastion_host_name = "dpk-bastion-01"
 sku = "Basic"
+
+nat_gateway_name = "dpk-ng-01"
+public_ip_name = "dpk-pip-01"

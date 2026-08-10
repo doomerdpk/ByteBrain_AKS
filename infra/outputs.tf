@@ -122,3 +122,13 @@ output "bastion_nsg_id" {
   description = "Azure Bastion Network Security Group ID"
   value       = module.azure_bastion.nsg_id
 }
+
+output "nat_gateway_id" {
+  description = "Azure NAT Gateway ID"
+  value       = module.nat_gateway.nat_gateway_id
+}
+
+output "nat_public_ip_address" {
+  description = "Public IP Address associated with the NAT Gateway"
+  value       = module.nat_gateway.public_ip_address
+}

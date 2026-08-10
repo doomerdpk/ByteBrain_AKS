@@ -154,3 +154,13 @@ variable "sku" {
   type        = string
 }
 
+
+variable "nat_gateway_name" {
+  description = "Name of the Azure NAT Gateway"
+  type        = string
+}
+
+variable "public_ip_name" {
+  description = "Name of the Public IP associated with the NAT Gateway"
+  type        = string
+}

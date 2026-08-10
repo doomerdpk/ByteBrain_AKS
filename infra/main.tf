@@ -223,3 +223,14 @@ module "azure_bastion" {
   allowed_source_address_prefixes = ["103.175.135.241/32"]
 }
 
+
+module "nat_gateway" {
+  source              = "./modules/nat-gateway"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  nat_gateway_name    = var.nat_gateway_name
+  public_ip_name      = var.public_ip_name
+  subnet_id           = module.bytebrain_subnet.subnet_id
+  tags                = local.bytebrain_tags
+}
+
