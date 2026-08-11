@@ -8,18 +8,8 @@ variable "location" {
   type        = string
 }
 
-variable "vnet_name" {
-  description = "Existing virtual network name"
-  type        = string
-}
-
-variable "subnet_name" {
-  description = "Subnet name for the jumpbox"
-  type        = string
-}
-
-variable "subnet_prefix" {
-  description = "CIDR for the jumpbox subnet"
+variable "subnet_id" {
+  description = "Existing subnet ID for the jumpbox NIC"
   type        = string
 }
 
