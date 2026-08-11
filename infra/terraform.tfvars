@@ -54,3 +54,7 @@ aks_service_cidr = "10.2.0.0/24"
 aks_dns_service_ip = "10.2.0.10"
 aks_private_cluster_enabled = true
 aks_enable_private_cluster_public_fqdn = false
+
+vm_name = "jumpbox-vm-aks"
+nic_name = "jumpbox-vm-aks-nic"
+admin_username = "azureuser"

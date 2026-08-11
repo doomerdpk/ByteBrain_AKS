@@ -235,3 +235,18 @@ variable "aks_subnet_name" {
   description = "Name of the subnet for AKS cluster"
   type        = string
 }
+
+variable "vm_name" {
+  description = "Name of the jump VM"
+  type        = string
+}
+
+variable "nic_name" {
+  description = "Name of the network interface for the jump VM"
+  type        = string
+}
+
+variable "admin_username" {
+  description = "Admin username for the jump VM"
+  type        = string
+}

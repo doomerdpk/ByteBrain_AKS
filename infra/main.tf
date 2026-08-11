@@ -274,3 +274,16 @@ module "bytebrain_aks" {
   tags                = local.bytebrain_tags
 }
 
+module "jump_vm_aks" {
+  source              = "./modules/jump-vm-aks"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  vnet_name           = module.bytebrain_vnet.name
+  subnet_name         = var.aks_subnet_name
+  vm_name             = var.vm_name
+  nic_name            = var.nic_name
+  vm_size             = var.vm_size
+  admin_username      = var.admin_username
+  ssh_key_data        = var.ssh_public_key
+  tags                = local.bytebrain_tags
+}
