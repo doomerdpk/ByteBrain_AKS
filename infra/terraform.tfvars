@@ -44,7 +44,7 @@ log_analytics_workspace_name = "dpk-workspace-01"
 
 aks_cluster_name = "bytebrain-aks-01"
 aks_dns_prefix = "bytebrainaks"
-kubernetes_version = "1.28.0"
+kubernetes_version = "1.34.9"
 aks_agent_pool_name = "bbagentpool"
 aks_node_count = 1
 aks_node_vm_size = "Standard_D2as_v7"
