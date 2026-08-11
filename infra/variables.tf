@@ -256,7 +256,7 @@ variable "vm_size" {
   type        = string
 }
 
-variable "subnet_name" {
+variable "jumpbox_subnet_name" {
   description = "Name of the subnet for the jump VM"
   type        = string
 }
