@@ -258,7 +258,7 @@ module "bytebrain_aks" {
   dns_service_ip      = var.aks_dns_service_ip
   private_cluster_enabled = var.aks_private_cluster_enabled
   enable_private_cluster_public_fqdn = var.aks_enable_private_cluster_public_fqdn
-  log_analytics_workspace_id = module.log_analytics.workspace_id
+  log_analytics_workspace_id = module.log_analytics.log_analytics_workspace_id
   identity_name       = module.bytebrain_user_assigned_identity.name
   identity_resource_group_name = module.bytebrain_rg.name
   ssh_public_key     = var.ssh_public_key
