@@ -129,3 +129,8 @@ variable "service_principal_client_secret" {
   sensitive   = true
   default     = null
 }
+
+variable "ssh_public_key" {
+  type      = string
+  sensitive = true
+}

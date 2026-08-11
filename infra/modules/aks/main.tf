@@ -64,7 +64,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     admin_username = "dpkaksuser"
 
     ssh_key {
-      key_data = file("~/.ssh/id_rsa.pub")
+      key_data = var.ssh_public_key
     }
   }
 }
@@ -97,18 +97,6 @@ resource "azurerm_network_security_group" "aks" {
     destination_port_ranges    = ["443"]
     source_address_prefix      = "VirtualNetwork"
     destination_address_prefix = "AzureCloud"
-  }
-
-  security_rule {
-    name                       = "AllowDnsOutbound"
-    priority                   = 120
-    direction                  = "Outbound"
-    access                     = "Allow"
-    protocol                   = "Udp"
-    source_port_range          = "*"
-    destination_port_range     = "53"
-    source_address_prefix      = "VirtualNetwork"
-    destination_address_prefix = "VirtualNetwork"
   }
 }
 
