@@ -8,9 +8,25 @@ variable "location" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "Existing subnet ID for the jumpbox NIC"
+variable "vnet_name" {
+  description = "Existing virtual network name"
   type        = string
+}
+
+variable "subnet_name" {
+  description = "Subnet name for the jumpbox"
+  type        = string
+}
+
+variable "subnet_prefix" {
+  description = "CIDR for the jumpbox subnet"
+  type        = string
+}
+
+variable "allowed_ssh_cidr" {
+  description = "CIDR range allowed to SSH into the jumpbox"
+  type        = string
+  default     = "10.0.1.0/26"
 }
 
 variable "admin_username" {
@@ -28,18 +44,6 @@ variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
-}
-
-variable "public_ip_name" {
-  description = "Public IP name for the jumpbox"
-  type        = string
-  default     = null
-}
-
-variable "assign_public_ip" {
-  description = "Whether the jumpbox should be assigned a public IP"
-  type        = bool
-  default     = false
 }
 
 variable "nic_name" {
