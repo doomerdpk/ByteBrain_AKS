@@ -224,17 +224,6 @@ module "azure_bastion" {
 }
 
 
-module "nat_gateway" {
-  source              = "./modules/nat-gateway"
-  resource_group_name = module.bytebrain_rg.name
-  location            = module.bytebrain_rg.location
-  nat_gateway_name    = var.nat_gateway_name
-  public_ip_name      = var.public_ip_name
-  subnet_id           = module.bytebrain_subnet.subnet_id
-  tags                = local.bytebrain_tags
-}
-
-
 module "log_analytics" {
   source              = "./modules/log-analytics"
   resource_group_name = module.bytebrain_rg.name
@@ -249,6 +238,16 @@ module "bytebrain_aks_subnet" {
   vnet_name           = module.bytebrain_vnet.name
   subnet_name         = var.aks_subnet_name
   address_prefixes    = ["10.0.1.128/26"]
+  tags                = local.bytebrain_tags
+}
+
+module "nat_gateway" {
+  source              = "./modules/nat-gateway"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  nat_gateway_name    = var.nat_gateway_name
+  public_ip_name      = var.public_ip_name
+  subnet_id           = module.bytebrain_aks_subnet.subnet_id
   tags                = local.bytebrain_tags
 }
 
