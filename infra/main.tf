@@ -243,3 +243,25 @@ module "log_analytics" {
   tags                = local.bytebrain_tags
 }
 
+module "bytebrain_aks" {
+  source              = "./modules/aks"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  cluster_name        = var.aks_cluster_name
+  dns_prefix         = var.aks_dns_prefix
+  kubernetes_version = var.kubernetes_version
+  agent_pool_name     = var.aks_agent_pool_name
+  node_count         = var.aks_node_count
+  node_vm_size       = var.aks_node_vm_size
+  vnet_subnet_id      = module.bytebrain_subnet.subnet_id
+  service_cidr        = var.aks_service_cidr
+  dns_service_ip      = var.aks_dns_service_ip
+  private_cluster_enabled = var.aks_private_cluster_enabled
+  enable_private_cluster_public_fqdn = var.aks_enable_private_cluster_public_fqdn
+  log_analytics_workspace_id = module.log_analytics.workspace_id
+  identity_name       = module.bytebrain_user_assigned_identity.name
+  identity_resource_group_name = module.bytebrain_rg.name
+  ssh_public_key     = var.ssh_public_key
+  tags                = local.bytebrain_tags
+}
+

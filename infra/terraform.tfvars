@@ -41,3 +41,14 @@ nat_gateway_name = "dpk-ng-01"
 public_ip_name = "dpk-pip-01"
 
 log_analytics_workspace_name = "dpk-workspace-01"
+
+aks_cluster_name = "bytebrain-aks-01"
+aks_dns_prefix = "bytebrainaks"
+kubernetes_version = "1.28.0"
+aks_agent_pool_name = "bytebrain-agentpool"
+aks_node_count = 1
+aks_node_vm_size = "Standard_D4s_v2"
+aks_service_cidr = "10.2.0.0/24"
+aks_dns_service_ip = "10.2.0.10"
+aks_private_cluster_enabled = true
+aks_enable_private_cluster_public_fqdn = false

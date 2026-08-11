@@ -132,3 +132,19 @@ output "nat_public_ip_address" {
   description = "Public IP Address associated with the NAT Gateway"
   value       = module.nat_gateway.public_ip_address
 }
+
+output "aks_id" {
+  value = module.bytebrain_aks.aks_id
+}
+
+output "aks_name" {
+  value = module.bytebrain_aks.aks_name
+}
+
+output "aks_fqdn" {
+  value = module.bytebrain_aks.aks_fqdn
+}
+
+output "node_resource_group" {
+  value = module.bytebrain_aks.node_resource_group
+}
