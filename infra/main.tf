@@ -237,7 +237,7 @@ module "bytebrain_aks_subnet" {
   resource_group_name = module.bytebrain_rg.name
   vnet_name           = module.bytebrain_vnet.name
   subnet_name         = var.aks_subnet_name
-  address_prefixes    = ["10.0.1.128/26"]
+  address_prefixes    = ["10.0.2.0/24"]
   tags                = local.bytebrain_tags
 }
 
