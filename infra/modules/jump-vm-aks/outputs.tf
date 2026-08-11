@@ -1,7 +1,3 @@
-output "jumpbox_subnet_id" {
-  value = azurerm_subnet.jumpbox.id
-}
-
 output "jumpbox_private_ip" {
   value = azurerm_network_interface.jumpbox.private_ip_address
 }

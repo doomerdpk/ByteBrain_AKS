@@ -149,10 +149,6 @@ output "node_resource_group" {
   value = module.bytebrain_aks.node_resource_group
 }
 
-output "jumbox_subnet_id" {
-  value = module.jump_vm_aks.jumpbox_subnet_id
-}
-
 output "jumpbox_private_ip" {
   value = module.jump_vm_aks.jumpbox_private_ip
 }
