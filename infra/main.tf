@@ -243,6 +243,16 @@ module "log_analytics" {
   tags                = local.bytebrain_tags
 }
 
+module "bytebrain_aks_subnet" {
+  source              = "./modules/subnet"
+  resource_group_name = module.bytebrain_rg.name
+  vnet_name           = module.bytebrain_vnet.name
+  subnet_name         = var.aks_subnet_name
+  address_prefixes    = ["10.0.1.64/26"]
+  tags                = local.bytebrain_tags
+}
+
+
 module "bytebrain_aks" {
   source              = "./modules/aks"
   resource_group_name = module.bytebrain_rg.name
@@ -253,7 +263,7 @@ module "bytebrain_aks" {
   agent_pool_name     = var.aks_agent_pool_name
   node_count         = var.aks_node_count
   node_vm_size       = var.aks_node_vm_size
-  vnet_subnet_id      = module.bytebrain_subnet.subnet_id
+  vnet_subnet_id      = module.bytebrain_aks_subnet.subnet_id
   service_cidr        = var.aks_service_cidr
   dns_service_ip      = var.aks_dns_service_ip
   private_cluster_enabled = var.aks_private_cluster_enabled

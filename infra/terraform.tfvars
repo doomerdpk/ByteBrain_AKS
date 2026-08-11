@@ -42,6 +42,8 @@ public_ip_name = "dpk-pip-01"
 
 log_analytics_workspace_name = "dpk-workspace-01"
 
+aks_subnet_name = "snet-bytebrain-aks"
+
 aks_cluster_name = "bytebrain-aks-01"
 aks_dns_prefix = "bytebrainaks"
 kubernetes_version = "1.34.9"

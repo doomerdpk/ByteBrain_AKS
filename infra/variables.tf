@@ -230,3 +230,8 @@ variable "ssh_public_key" {
   description = "SSH public key for AKS node access"
   type        = string
 }
+
+variable "aks_subnet_name" {
+  description = "Name of the subnet for AKS cluster"
+  type        = string
+}
