@@ -261,7 +261,7 @@ variable "jumpbox_subnet_name" {
   type        = string
 }
 
-variable "subnet_prefix" {
+variable "jumpbox_subnet_prefix" {
   description = "CIDR prefix for the jump VM subnet"
   type        = string
 }
