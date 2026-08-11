@@ -19,36 +19,14 @@ resource "azurerm_network_security_group" "jumpbox" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "Internet"
+    source_address_prefix      = "10.0.1.0/26"
     destination_address_prefix = "*"
-  }
-
-  security_rule {
-    name                       = "AllowAzureLoadBalancerOutbound"
-    priority                   = 200
-    direction                  = "Outbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "AzureLoadBalancer"
   }
 }
 
 resource "azurerm_subnet_network_security_group_association" "jumpbox" {
   subnet_id                 = azurerm_subnet.jumpbox.id
   network_security_group_id = azurerm_network_security_group.jumpbox.id
-}
-
-resource "azurerm_public_ip" "jumpbox" {
-  count               = var.assign_public_ip ? 1 : 0
-  name                = var.public_ip_name
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  allocation_method   = "Static"
-  sku                 = "Standard"
-  tags                = var.tags
 }
 
 resource "azurerm_network_interface" "jumpbox" {
@@ -60,7 +38,6 @@ resource "azurerm_network_interface" "jumpbox" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.jumpbox.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = var.assign_public_ip ? azurerm_public_ip.jumpbox[0].id : null
   }
 
   tags = var.tags
