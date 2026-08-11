@@ -255,3 +255,13 @@ variable "vm_size" {
   description = "Size of the jump VM"
   type        = string
 }
+
+variable "subnet_name" {
+  description = "Name of the subnet for the jump VM"
+  type        = string
+}
+
+variable "subnet_prefix" {
+  description = "CIDR prefix for the jump VM subnet"
+  type        = string
+}
