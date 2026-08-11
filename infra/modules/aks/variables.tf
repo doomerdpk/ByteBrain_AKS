@@ -65,11 +65,6 @@ variable "dns_service_ip" {
   default     = "10.2.0.10"
 }
 
-variable "docker_bridge_cidr" {
-  description = "Docker bridge CIDR"
-  type        = string
-  default     = "172.17.0.1/16"
-}
 
 variable "network_plugin" {
   description = "Kubernetes network plugin"
@@ -115,19 +110,6 @@ variable "aad_admin_group_object_ids" {
   description = "AAD group object IDs who will be cluster admins"
   type        = list(string)
   default     = []
-}
-
-variable "service_principal_client_id" {
-  description = "Optional service principal client ID for AKS"
-  type        = string
-  default     = null
-}
-
-variable "service_principal_client_secret" {
-  description = "Optional service principal secret for AKS"
-  type        = string
-  sensitive   = true
-  default     = null
 }
 
 variable "ssh_public_key" {
