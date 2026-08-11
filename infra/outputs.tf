@@ -150,14 +150,14 @@ output "node_resource_group" {
 }
 
 output "jumbox_subnet_id" {
-  value = module.jumpbox_vm_aks.jumpbox_subnet_id
+  value = module.jump_vm_aks.jumpbox_subnet_id
 }
 
 output "jumpbox_private_ip" {
-  value = module.jumpbox_vm_aks.jumpbox_private_ip
+  value = module.jump_vm_aks.jumpbox_private_ip
 }
 
 output "jumpbox_vm_id" {
-  value = module.jumpbox_vm_aks.jumpbox_vm_id
+  value = module.jump_vm_aks.jumpbox_vm_id
 }
 

@@ -250,3 +250,8 @@ variable "admin_username" {
   description = "Admin username for the jump VM"
   type        = string
 }
+
+variable "vm_size" {
+  description = "Size of the jump VM"
+  type        = string
+}

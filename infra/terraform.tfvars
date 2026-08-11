@@ -56,5 +56,6 @@ aks_private_cluster_enabled = true
 aks_enable_private_cluster_public_fqdn = false
 
 vm_name = "jumpbox-vm-aks"
+vm_size = "Standard_D2as_v7"
 nic_name = "jumpbox-vm-aks-nic"
 admin_username = "azureuser"
