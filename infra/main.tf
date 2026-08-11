@@ -278,7 +278,6 @@ module "jump_vm_aks" {
   source              = "./modules/jump-vm-aks"
   resource_group_name = module.bytebrain_rg.name
   location            = module.bytebrain_rg.location
-  vnet_name           = module.bytebrain_vnet.name
   subnet_id           = module.bytebrain_aks_subnet.subnet_id
   vm_name             = var.vm_name
   nic_name            = var.nic_name
