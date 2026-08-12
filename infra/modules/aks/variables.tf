@@ -116,3 +116,8 @@ variable "ssh_public_key" {
   type      = string
   sensitive = true
 }
+
+variable "key_vault_id" {
+  type        = string
+  description = "Resource ID of the Key Vault the AKS identity needs access to"
+}
