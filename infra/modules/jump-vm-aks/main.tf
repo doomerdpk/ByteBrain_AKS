@@ -79,6 +79,7 @@ resource "azurerm_role_assignment" "jumpbox_aks_access" {
   for_each = toset([
     "Azure Kubernetes Service RBAC Reader",
     "Azure Kubernetes Service Cluster User Role",
+    "Azure Kubernetes Service RBAC Cluster Reader"
   ])
 
   scope                = var.aks_cluster_id
