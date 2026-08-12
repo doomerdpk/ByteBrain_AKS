@@ -271,6 +271,7 @@ module "bytebrain_aks" {
   identity_name       = module.bytebrain_user_assigned_identity.name
   identity_resource_group_name = module.bytebrain_rg.name
   ssh_public_key     = var.ssh_public_key
+  key_vault_id       = module.key_vault.key_vault_id
   tags                = local.bytebrain_tags
 }
 

@@ -22,6 +22,11 @@ resource "azurerm_kubernetes_cluster" "this" {
     os_disk_type        = "Managed"
   }
 
+  key_vault_secrets_provider {
+    secret_rotation_enabled  = true
+    secret_rotation_interval = "2m"
+  }
+
   identity {
     type         = "UserAssigned"
     identity_ids = [data.azurerm_user_assigned_identity.this.id]
@@ -96,5 +101,11 @@ resource "azurerm_network_security_group" "aks" {
 resource "azurerm_subnet_network_security_group_association" "aks" {
   subnet_id                 = var.vnet_subnet_id
   network_security_group_id = azurerm_network_security_group.aks.id
+}
+
+resource "azurerm_role_assignment" "aks_kv_secrets_user" {
+  scope                = var.key_vault_id
+  role_definition_name = "Key Vault Secrets User"
+  principal_id         = data.azurerm_user_assigned_identity.this.principal_id
 }
 
