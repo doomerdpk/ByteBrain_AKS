@@ -272,6 +272,14 @@ module "bytebrain_aks" {
   identity_resource_group_name = module.bytebrain_rg.name
   ssh_public_key     = var.ssh_public_key
   key_vault_id       = module.key_vault.key_vault_id
+  git_repo_url        = var.git_repo_url
+  git_repo_branch     = var.git_repo_branch
+  branch_or_tag       = var.branch_or_tag
+  git_sync_interval    = var.git_sync_interval
+  kustomization_name  = var.kustomization_name
+  kustomization_path  = var.kustomization_path
+  kustomization_prune = var.kustomization_prune
+  kustomization_retry_interval_seconds = var.kustomization_retry_interval_seconds
   tags                = local.bytebrain_tags
 }
 
