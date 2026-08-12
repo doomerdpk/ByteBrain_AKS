@@ -103,9 +103,4 @@ resource "azurerm_subnet_network_security_group_association" "aks" {
   network_security_group_id = azurerm_network_security_group.aks.id
 }
 
-resource "azurerm_role_assignment" "aks_kv_secrets_user" {
-  scope                = var.key_vault_id
-  role_definition_name = "Key Vault Secrets User"
-  principal_id         = data.azurerm_user_assigned_identity.this.principal_id
-}
 
