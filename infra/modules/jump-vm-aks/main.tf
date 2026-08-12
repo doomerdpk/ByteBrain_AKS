@@ -79,4 +79,6 @@ resource "azurerm_role_assignment" "jumpbox_aks_access" {
   scope                = var.aks_cluster_id
   role_definition_name = "Azure Kubernetes Service RBAC Reader"
   principal_id          = azurerm_linux_virtual_machine.jumpbox.identity[0].principal_id
+
+  depends_on = [azurerm_linux_virtual_machine.jumpbox]
 }
