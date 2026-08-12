@@ -55,6 +55,10 @@ resource "azurerm_linux_virtual_machine" "jumpbox" {
     public_key = var.ssh_key_data
   }
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
@@ -68,4 +72,11 @@ resource "azurerm_linux_virtual_machine" "jumpbox" {
   }
 
   tags = var.tags
+}
+
+
+resource "azurerm_role_assignment" "jumpbox_aks_access" {
+  scope                = var.aks_cluster_id
+  role_definition_name = "Azure Kubernetes Service RBAC Reader"
+  principal_id          = azurerm_linux_virtual_machine.jumpbox.identity[0].principal_id
 }
