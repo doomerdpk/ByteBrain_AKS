@@ -286,6 +286,6 @@ module "jump_vm_aks" {
   vm_size             = var.vm_size
   admin_username      = var.admin_username
   ssh_key_data        = var.ssh_public_key
-  aks_cluster_id      = module.bytebrain_aks.id
+  aks_cluster_id      = module.bytebrain_aks.aks_id
   tags                = local.bytebrain_tags
 }
