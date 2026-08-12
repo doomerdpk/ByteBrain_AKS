@@ -5,3 +5,7 @@ output "jumpbox_private_ip" {
 output "jumpbox_vm_id" {
   value = azurerm_linux_virtual_machine.jumpbox.id
 }
+
+output "jumpbox_subnet_id" {
+  value = azurerm_subnet.jumpbox.id
+}

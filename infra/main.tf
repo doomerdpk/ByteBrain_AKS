@@ -289,3 +289,8 @@ module "jump_vm_aks" {
   aks_cluster_id      = module.bytebrain_aks.aks_id
   tags                = local.bytebrain_tags
 }
+
+resource "azurerm_subnet_nat_gateway_association" "jumpbox" {
+  subnet_id      = module.jump_vm_aks.jumpbox_subnet_id
+  nat_gateway_id = module.nat_gateway.nat_gateway_id
+}
