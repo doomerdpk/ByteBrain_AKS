@@ -103,4 +103,32 @@ resource "azurerm_subnet_network_security_group_association" "aks" {
   network_security_group_id = azurerm_network_security_group.aks.id
 }
 
+resource "azurerm_kubernetes_cluster_extension" "flux" {
+  name           = "flux"
+  cluster_id     = azurerm_kubernetes_cluster.this.id
+  extension_type = "microsoft.flux"
+}
+
+resource "azurerm_kubernetes_flux_configuration" "backend" {
+  name       = "backend-gitops"
+  cluster_id = azurerm_kubernetes_cluster.this.id
+  namespace  = "flux-system"
+
+  git_repository {
+    url             = var.git_repo_url
+    reference_type  = var.branch_or_tag
+    reference_value = var.git_repo_branch
+    sync_interval   = var.git_sync_interval 
+  }
+
+  kustomizations {
+    name = var.kustomization_name
+    path = var.kustomization_path
+    interval      = var.kustomization_interval 
+    retry_interval_in_seconds  = var.kustomization_retry_interval_seconds
+    garbage_collection_enabled = var.kustomization_prune
+  }
+
+  depends_on = [azurerm_kubernetes_cluster_extension.flux]
+}
 

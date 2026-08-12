@@ -121,3 +121,57 @@ variable "key_vault_id" {
   type        = string
   description = "Resource ID of the Key Vault the AKS identity needs access to"
 }
+
+variable "git_repo_url" {
+  type        = string
+  description = "URL of the GitOps repository"
+}
+
+variable "git_repo_branch" {
+  type        = string
+  description = "Branch of the GitOps repository"
+  default     = "main"
+}
+
+variable "branch_or_tag" {
+  type        = string
+  description = "Branch or tag of the GitOps repository"
+  default     = "branch"
+}
+
+variable "kustomization_name" {
+  type        = string
+  description = "Name of the Kustomization"
+  default     = "backend"
+}
+
+variable "kustomization_path" {
+  type        = string
+  description = "Path of the Kustomization"
+  default     = "./manifests"
+}
+
+variable "kustomization_prune" {
+  type        = bool
+  description = "Whether to enable pruning for the Kustomization"
+  default     = true
+}
+
+variable "kustomization_interval" {
+  type        = string
+  description = "Interval for the Kustomization reconciliation"
+  default     = "1m"
+}
+
+variable "git_sync_interval" {
+  type        = string
+  description = "Interval for Git repository synchronization"
+  default     = "1m"
+}
+
+variable "kustomization_retry_interval" {
+  type        = string
+  description = "Interval for retrying Kustomization reconciliation"
+  default     = "1m"
+}
+
