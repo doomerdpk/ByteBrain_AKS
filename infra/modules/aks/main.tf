@@ -153,3 +153,9 @@ resource "azurerm_kubernetes_flux_configuration" "backend" {
   depends_on = [azurerm_kubernetes_cluster_extension.flux]
 }
 
+resource "azurerm_role_assignment" "kubelet_kv_secrets_user" {
+  scope                = var.key_vault_id
+  role_definition_name = "Key Vault Secrets User"
+  principal_id         = azurerm_kubernetes_cluster.this.kubelet_identity[0].object_id
+}
+
