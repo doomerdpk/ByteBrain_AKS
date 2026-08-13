@@ -106,11 +106,6 @@ variable "identity_resource_group_name" {
   type        = string
 }
 
-variable "aad_admin_group_object_ids" {
-  description = "AAD group object IDs who will be cluster admins"
-  type        = list(string)
-  default     = []
-}
 
 variable "ssh_public_key" {
   type      = string

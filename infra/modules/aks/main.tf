@@ -104,7 +104,7 @@ resource "azurerm_subnet_network_security_group_association" "aks" {
   network_security_group_id = azurerm_network_security_group.aks.id
 }
 
-resource "kubernetes_cluster_role_binding" "jumpbox_admin" {
+resource "kubernetes_cluster_role_binding_v1" "jumpbox_admin" {
   metadata {
     name = "jumpbox-admin"
   }
@@ -120,21 +120,6 @@ resource "kubernetes_cluster_role_binding" "jumpbox_admin" {
   }
 }
 
-resource "kubernetes_cluster_role_binding" "aad_admins" {
-  metadata {
-    name = "aad-admins"
-  }
-  role_ref {
-    api_group = "rbac.authorization.k8s.io"
-    kind      = "ClusterRole"
-    name      = "cluster-admin"
-  }
-  subject {
-    kind      = "Group"
-    name      = var.aad_admin_group_object_ids[0]
-    api_group = "rbac.authorization.k8s.io"
-  }
-}
 
 resource "azurerm_role_assignment" "jumpbox_cluster_user" {
   scope                = azurerm_kubernetes_cluster.this.id
