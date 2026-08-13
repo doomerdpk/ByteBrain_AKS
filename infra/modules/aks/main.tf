@@ -118,14 +118,11 @@ resource "azurerm_kubernetes_flux_configuration" "backend" {
     url             = var.git_repo_url
     reference_type  = var.branch_or_tag
     reference_value = var.git_repo_branch
-    sync_interval   = var.git_sync_interval 
   }
 
   kustomizations {
     name = var.kustomization_name
     path = var.kustomization_path
-    interval      = var.kustomization_interval 
-    retry_interval_in_seconds  = var.kustomization_retry_interval_seconds
     garbage_collection_enabled = var.kustomization_prune
   }
 

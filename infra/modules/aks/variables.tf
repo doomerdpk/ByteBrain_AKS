@@ -139,12 +139,6 @@ variable "branch_or_tag" {
   default     = "branch"
 }
 
-variable "git_sync_interval" {
-  type        = string
-  description = "Interval for Git repository synchronization"
-  default     = "3m"
-}
-
 variable "kustomization_name" {
   type        = string
   description = "Name of the Kustomization"
@@ -162,16 +156,3 @@ variable "kustomization_prune" {
   description = "Whether to enable pruning for the Kustomization"
   default     = true
 }
-
-variable "kustomization_interval" {
-  type        = string
-  description = "Interval for the Kustomization reconciliation"
-  default     = "3m"
-}
-
-variable "kustomization_retry_interval_seconds" {
-  type        = string
-  description = "Interval for retrying Kustomization reconciliation"
-  default     = "1m"
-}
-
