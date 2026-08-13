@@ -66,6 +66,24 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 }
 
+provider "kubernetes" {
+  host = azurerm_kubernetes_cluster.this.kube_admin_config[0].host
+
+  client_certificate     = base64decode(azurerm_kubernetes_cluster.this.kube_admin_config[0].client_certificate)
+  client_key             = base64decode(azurerm_kubernetes_cluster.this.kube_admin_config[0].client_key)
+  cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.this.kube_admin_config[0].cluster_ca_certificate)
+
+  load_config_file = false
+}
+
+resource "kubernetes_namespace" "backend" {
+  metadata {
+    name = "backend"
+  }
+
+  depends_on = [azurerm_kubernetes_cluster.this]
+}
+
 resource "azurerm_network_security_group" "aks" {
   name                = "${var.cluster_name}-aks-nsg"
   location            = var.location
