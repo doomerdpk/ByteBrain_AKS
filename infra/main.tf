@@ -220,12 +220,11 @@ module "azure_bastion" {
   sku                = var.sku
   enable_diagnostics = false
 
-#   allowed_source_address_prefixes = [
-#   "103.177.82.129/32",
-#   "203.191.35.125/32"
-# ]
+  allowed_source_address_prefixes = [
+  "103.177.82.129/32",
+  "203.191.35.125/32"
+]
 
-allowed_source_address_prefixes = ["*"]
 }
 
 
