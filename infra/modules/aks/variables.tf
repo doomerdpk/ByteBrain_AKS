@@ -161,3 +161,8 @@ variable "jumpbox_principal_id" {
   type        = string
   description = "Principal (object) ID of the jumpbox's managed identity"
 }
+
+variable "acr_id" {
+  type        = string
+  description = "Resource ID of the Azure Container Registry the AKS identity needs access to"
+}
