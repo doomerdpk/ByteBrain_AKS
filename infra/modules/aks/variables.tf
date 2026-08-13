@@ -169,7 +169,7 @@ variable "kustomization_interval" {
   default     = "3m"
 }
 
-variable "kustomization_retry_interval" {
+variable "kustomization_retry_interval_seconds" {
   type        = string
   description = "Interval for retrying Kustomization reconciliation"
   default     = "1m"
