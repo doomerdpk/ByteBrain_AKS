@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: acrbytebrainaks.azurecr.io/bytebrainbackend:30616c1edefe79c6d2f78490aa79ab6cc3d66f14
+          image: acrbytebrainaks.azurecr.io/bytebrainbackend:138471edac153b141bd504425e4ce67387947695
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
