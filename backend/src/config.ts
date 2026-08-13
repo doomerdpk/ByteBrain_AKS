@@ -29,8 +29,8 @@ export async function loadConfig(): Promise<void> {
   }
 
   const credential = new DefaultAzureCredential(
-    process.env.AZURE_CLIENT_ID
-      ? { managedIdentityClientId: process.env.AZURE_CLIENT_ID }
+    process.env.AZURE_CLIENT_ID_K8S
+      ? { managedIdentityClientId: process.env.AZURE_CLIENT_ID_K8S }
       : undefined
   );
   const client = new SecretClient(vaultUri, credential);
