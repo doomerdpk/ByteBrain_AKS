@@ -298,6 +298,7 @@ module "bytebrain_aks" {
   key_vault_id       = module.key_vault.key_vault_id
   git_repo_url        = var.git_repo_url
   jumpbox_principal_id = module.jump_vm_aks.jumpbox_principal_id
+  acr_id             = module.bytebrain_acr.id
   tags                = local.bytebrain_tags
 }
 
