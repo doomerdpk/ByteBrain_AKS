@@ -32,6 +32,12 @@ resource "azurerm_kubernetes_cluster" "this" {
     identity_ids = [data.azurerm_user_assigned_identity.this.id]
   }
 
+  kubelet_identity {
+  client_id                 = data.azurerm_user_assigned_identity.this.client_id
+  object_id                  = data.azurerm_user_assigned_identity.this.principal_id
+  user_assigned_identity_id  = data.azurerm_user_assigned_identity.this.id
+  }
+
   private_cluster_enabled             = var.private_cluster_enabled
   private_cluster_public_fqdn_enabled = var.enable_private_cluster_public_fqdn
 
