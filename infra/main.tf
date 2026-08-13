@@ -255,6 +255,26 @@ module "nat_gateway" {
   tags                = local.bytebrain_tags
 }
 
+module "jump_vm_aks" {
+  source              = "./modules/jump-vm-aks"
+  resource_group_name = module.bytebrain_rg.name
+  location            = module.bytebrain_rg.location
+  vnet_name           = module.bytebrain_vnet.name
+  subnet_name         = var.jumpbox_subnet_name
+  subnet_prefix       = var.jumpbox_subnet_prefix
+  vm_name             = var.vm_name
+  nic_name            = var.nic_name
+  vm_size             = var.vm_size
+  admin_username      = var.admin_username
+  ssh_key_data        = var.ssh_public_key
+  tags                = local.bytebrain_tags
+}
+
+resource "azurerm_subnet_nat_gateway_association" "jumpbox" {
+  subnet_id      = module.jump_vm_aks.jumpbox_subnet_id
+  nat_gateway_id = module.nat_gateway.nat_gateway_id
+}
+
 
 module "bytebrain_aks" {
   source              = "./modules/aks"
@@ -277,26 +297,15 @@ module "bytebrain_aks" {
   ssh_public_key     = var.ssh_public_key
   key_vault_id       = module.key_vault.key_vault_id
   git_repo_url        = var.git_repo_url
+  jumpbox_principal_id = module.jump_vm_aks.jumpbox_principal_id
   tags                = local.bytebrain_tags
 }
 
-module "jump_vm_aks" {
-  source              = "./modules/jump-vm-aks"
-  resource_group_name = module.bytebrain_rg.name
-  location            = module.bytebrain_rg.location
-  vnet_name           = module.bytebrain_vnet.name
-  subnet_name         = var.jumpbox_subnet_name
-  subnet_prefix       = var.jumpbox_subnet_prefix
-  vm_name             = var.vm_name
-  nic_name            = var.nic_name
-  vm_size             = var.vm_size
-  admin_username      = var.admin_username
-  ssh_key_data        = var.ssh_public_key
-  aks_cluster_id      = module.bytebrain_aks.aks_id
-  tags                = local.bytebrain_tags
+provider "kubernetes" {
+  host                   = module.bytebrain_aks.kube_admin_config_host
+  client_certificate     = base64decode(module.bytebrain_aks.kube_admin_config_client_certificate)
+  client_key             = base64decode(module.bytebrain_aks.kube_admin_config_client_key)
+  cluster_ca_certificate = base64decode(module.bytebrain_aks.kube_admin_config_cluster_ca_certificate)
 }
 
-resource "azurerm_subnet_nat_gateway_association" "jumpbox" {
-  subnet_id      = module.jump_vm_aks.jumpbox_subnet_id
-  nat_gateway_id = module.nat_gateway.nat_gateway_id
-}
+

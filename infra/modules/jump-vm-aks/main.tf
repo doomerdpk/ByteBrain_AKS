@@ -74,16 +74,3 @@ resource "azurerm_linux_virtual_machine" "jumpbox" {
   tags = var.tags
 }
 
-
-resource "azurerm_role_assignment" "jumpbox_aks_access" {
-  for_each = toset([
-    "Azure Kubernetes Service Cluster User Role",
-    "Azure Kubernetes Service RBAC Cluster Admin"
-  ])
-
-  scope                = var.aks_cluster_id
-  role_definition_name = each.value
-  principal_id          = azurerm_linux_virtual_machine.jumpbox.identity[0].principal_id
-
-  depends_on = [azurerm_linux_virtual_machine.jumpbox]
-}

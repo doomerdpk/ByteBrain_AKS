@@ -61,8 +61,3 @@ variable "vm_size" {
   type        = string
   default     = "Standard_B2ms"
 }
-
-variable "aks_cluster_id" {
-  description = "The ID of the AKS cluster to assign RBAC role"
-  type        = string
-}

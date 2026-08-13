@@ -156,3 +156,8 @@ variable "kustomization_prune" {
   description = "Whether to enable pruning for the Kustomization"
   default     = true
 }
+
+variable "jumpbox_principal_id" {
+  type        = string
+  description = "Principal (object) ID of the jumpbox's managed identity"
+}
