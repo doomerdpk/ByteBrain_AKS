@@ -225,7 +225,7 @@ module "azure_bastion" {
 #   "203.191.35.125/32"
 # ]
 
-allowed_source_address_prefixes = [*]
+allowed_source_address_prefixes = ["*"]
 }
 
 
