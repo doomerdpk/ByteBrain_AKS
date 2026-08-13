@@ -265,3 +265,8 @@ variable "jumpbox_subnet_prefix" {
   description = "CIDR prefix for the jump VM subnet"
   type        = string
 }
+
+variable "git_repo_url" {
+  description = "URL of the Git repository containing Flux manifests"
+  type = string
+}
