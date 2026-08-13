@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bytebrain-backend
+  namespace: backend
+  labels:
+    app: bytebrain-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bytebrain-backend
+  template:
+    metadata:
+      labels:
+        app: bytebrain-backend
+    spec:
+      containers:
+      - name: backend
+        image: acrbytebrainaks.azurecr.io/bytebrainbackend:30616c1edefe79c6d2f78490aa79ab6cc3d66f14
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        env:
+        - name: PORT
+          value: "3000"
+        - name: KEY_VAULT_URI
+          value: "https://kvdpk01.vault.azure.net/"
+        - name: DB_CONNECTION_SECRET_NAME
+          value: "bytebrain-db-connection-string"
+        - name: JWT_SECRET_SECRET_NAME
+          value: "bytebrain-jwt-secret"
+        volumeMounts:
+        - name: secrets-store-inline
+          mountPath: "/mnt/secrets"
+          readOnly: true
+        # Checks whether the application is still running and responsive; if it fails repeatedly, Kubernetes restarts the container
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+        # Checks whether the application is ready to serve requests; if it fails, Kubernetes stops sending traffic to the pod without restarting it.
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          failureThreshold: 3
+      volumes:
+      - name: secrets-store-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "azure-keyvault-spc"
