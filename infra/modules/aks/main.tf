@@ -72,10 +72,10 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   lifecycle {
-    ignore_changes = [
-      api_server_access_profile[0].virtual_network_integration_enabled
-    ]
-  }
+  ignore_changes = [
+    "api_server_access_profile",
+  ]
+}
 }
 
 
