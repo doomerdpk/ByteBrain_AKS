@@ -170,71 +170,71 @@ variable "log_analytics_workspace_name" {
   type        = string
 }
 
-variable "aks_cluster_name" {
-  description = "Name of the AKS cluster"
-  type        = string
-}
+# variable "aks_cluster_name" {
+#   description = "Name of the AKS cluster"
+#   type        = string
+# }
 
-variable "aks_dns_prefix" {
-  description = "DNS prefix for the AKS cluster"
-  type        = string
-}
+# variable "aks_dns_prefix" {
+#   description = "DNS prefix for the AKS cluster"
+#   type        = string
+# }
 
-variable "kubernetes_version" {
-  description = "Kubernetes version for the AKS cluster"
-  type        = string
-}
+# variable "kubernetes_version" {
+#   description = "Kubernetes version for the AKS cluster"
+#   type        = string
+# }
 
-variable "aks_agent_pool_name" {
-  description = "Name of the AKS agent pool"
-  type        = string
-}
+# variable "aks_agent_pool_name" {
+#   description = "Name of the AKS agent pool"
+#   type        = string
+# }
 
-variable "aks_node_count" {
-  description = "Number of nodes in the AKS agent pool"
-  type        = number
-  default     = 3
-}
+# variable "aks_node_count" {
+#   description = "Number of nodes in the AKS agent pool"
+#   type        = number
+#   default     = 3
+# }
 
-variable "aks_node_vm_size" {
-  description = "VM size for AKS nodes"
-  type        = string
-  default     = "Standard_D4s_v3"
-}
+# variable "aks_node_vm_size" {
+#   description = "VM size for AKS nodes"
+#   type        = string
+#   default     = "Standard_D4s_v3"
+# }
 
-variable "aks_service_cidr" {
-  description = "Service CIDR block for AKS"
-  type        = string
-  default     = ""
-}
+# variable "aks_service_cidr" {
+#   description = "Service CIDR block for AKS"
+#   type        = string
+#   default     = ""
+# }
 
-variable "aks_dns_service_ip" {
-  description = "DNS service IP for AKS"
-  type        = string
-  default     = ""
-}
+# variable "aks_dns_service_ip" {
+#   description = "DNS service IP for AKS"
+#   type        = string
+#   default     = ""
+# }
 
-variable "aks_private_cluster_enabled" {
-  description = "Boolean to enable private AKS cluster"
-  type        = bool
-  default     = false
-}
+# variable "aks_private_cluster_enabled" {
+#   description = "Boolean to enable private AKS cluster"
+#   type        = bool
+#   default     = false
+# }
 
-variable "aks_enable_private_cluster_public_fqdn" {
-  description = "Boolean to enable public FQDN for private AKS cluster"
-  type        = bool
-  default     = false
-}
+# variable "aks_enable_private_cluster_public_fqdn" {
+#   description = "Boolean to enable public FQDN for private AKS cluster"
+#   type        = bool
+#   default     = false
+# }
 
-variable "ssh_public_key" {
-  description = "SSH public key for AKS node access"
-  type        = string
-}
+# variable "ssh_public_key" {
+#   description = "SSH public key for AKS node access"
+#   type        = string
+# }
 
-variable "aks_subnet_name" {
-  description = "Name of the subnet for AKS cluster"
-  type        = string
-}
+# variable "aks_subnet_name" {
+#   description = "Name of the subnet for AKS cluster"
+#   type        = string
+# }
 
 variable "vm_name" {
   description = "Name of the jump VM"
