@@ -70,6 +70,12 @@ resource "azurerm_kubernetes_cluster" "this" {
       key_data = var.ssh_public_key
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      api_server_access_profile[0].virtual_network_integration_enabled
+    ]
+  }
 }
 
 
