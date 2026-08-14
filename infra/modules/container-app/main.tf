@@ -69,4 +69,6 @@ resource "azurerm_container_app" "this" {
       percentage      = 100
     }
   }
+
+  workload_profile_name = "Consumption"
 }
