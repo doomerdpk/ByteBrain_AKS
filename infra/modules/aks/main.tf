@@ -20,6 +20,11 @@ resource "azurerm_kubernetes_cluster" "this" {
     type                = "VirtualMachineScaleSets"
     os_disk_size_gb     = 128
     os_disk_type        = "Managed"
+    upgrade_settings {
+      drain_timeout_in_minutes      = 0
+      max_surge                     = "10%"
+      node_soak_duration_in_minutes = 0
+    }
   }
 
   key_vault_secrets_provider {
@@ -37,6 +42,7 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   api_server_access_profile {
     authorized_ip_ranges = []
+    virtual_network_integration_enabled = false
   }
 
   network_profile {
