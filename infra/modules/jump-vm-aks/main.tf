@@ -71,9 +71,7 @@ resource "azurerm_linux_virtual_machine" "jumpbox" {
     version   = "latest"
   }
 
-  boot_diagnostics {
-    enabled = true
-  }
+  boot_diagnostics {}
 
 
   tags = var.tags
