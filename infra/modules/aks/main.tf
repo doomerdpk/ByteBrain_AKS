@@ -42,7 +42,6 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   api_server_access_profile {
     authorized_ip_ranges = []
-    virtual_network_integration_enabled = false
   }
 
   network_profile {

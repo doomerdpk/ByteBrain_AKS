@@ -12,6 +12,7 @@ resource "azurerm_subnet" "this" {
 
       service_delegation {
         name = delegation.value.service_name
+        actions = try(delegation.value.actions, ["Microsoft.Network/virtualNetworks/subnets/join/action"])
       }
     }
   }

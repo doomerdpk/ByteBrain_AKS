@@ -20,6 +20,7 @@ variable "delegation" {
   type = object({
     name         = string
     service_name = string
+    actions      = optional(list(string))
   })
 
   default = null
