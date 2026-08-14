@@ -126,6 +126,8 @@ module "bytebrain_subnet" {
   delegation = {
     name         = "container-apps-delegation"
     service_name = "Microsoft.App/environments"
+    actions      = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+
   }
   tags                = local.bytebrain_tags
 }
